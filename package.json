@@ -1,0 +1,14 @@
+{
+  "name": "ProyectoInmuebles",
+  "version": "0.0.0",
+  "description": "ProyectoInmuebles",
+  "author": {
+    "name": ""
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^4.1.4",
+    "mongoose": "^6.0.12",
+    "multer": "^1.4.3"
+  }
+}
