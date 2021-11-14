@@ -15,6 +15,7 @@ legend{
     font-style:oblique;
     font-weight:bold;
     font-size:18pt;
+    margin: 5% 0%;
 }
 
 .Section2{
@@ -46,9 +47,10 @@ button{
     color: white;
     border-radius: 10px;
 }
-#btnRegistrar{
+#btnRegistrar, #btnIngresar{
     background-color: #030d4fec;
 }
+
 button:hover{
     color:black;
     opacity: 0.9;
