@@ -1,0 +1,82 @@
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    background-color:#161616;
+    font-weight: 600;
+    color: #030d4f;
+    background: url(../Imagenes/Fondo.png) no-repeat center top;
+    background-size: cover;
+    font-family: sans-serif;
+    height: 80vh;  
+}
+
+legend{
+    text-transform: uppercase; 
+    font-style:oblique;
+    font-weight:bold;
+    font-size:18pt;
+}
+
+.Section2{
+    border: 6px double #030d4f;
+    background-color: #f3f5f4;
+    margin: 7% 35% 0%;
+    border-radius: 10px;
+   padding: 5px 5px 20px;    
+
+}
+
+.Section2 img{
+    width: 150px;
+    height: 70px;
+    background-color: #030d4f;
+    border-radius: 10%;
+    position: absolute;
+    left: 32%;
+    top: 11%;
+  }
+
+div{
+    margin: 15px;
+}
+button{
+    border:1px solid #030d4f;
+    font-size: 12pt;
+    padding:8px;
+    color: white;
+    border-radius: 10px;
+}
+#btnRegistrar{
+    background-color: #030d4fec;
+}
+button:hover{
+    color:black;
+    opacity: 0.9;
+}
+#btnCancelar{
+    background-color: rgb(255, 22, 22);
+}
+input{
+    outline: none;
+    width: 85%;
+    padding: 4px;
+    text-align: center;
+}
+
+input[type="text"], input[type="password"]{
+    border: none;
+    border-bottom: 1px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    background: transparent;
+    outline: none;
+    color:rgb(0, 0, 0);
+    font-size: 16px;
+    }
+
+    label{
+        margin: 10%;
+    }
+
+input:focus{
+    background: linear-gradient(90deg, rgba(78,78,78,0.26094187675070024) 0%, rgba(50,22,231,0.3925945378151261) 57%, rgba(95,255,251,0.22172619047619047) 100%);
+}
