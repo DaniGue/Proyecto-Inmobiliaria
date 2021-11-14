@@ -5,26 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ingresar</title>
-    <link rel="stylesheet" type="text/css" href="/CSS/Estilos_RegLogU.css">
-    <link rel="shortcut icon" href="/Imagenes/form.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="../CSS/Estilos_RegLogU.css">
+    <link rel="shortcut icon" href="../Imagenes/form.ico" type="image/x-icon" />
 </head>
 
 <body>
     <div class="Section2">
         <img src="../Imagenes/Logo.png">
         <legend><br>Ingresar</legend>
-        <div>
-            <label for="email">Email: </label>
-            <input id="email" type="text" name="email">
-        </div>
-        <div>
-            <label for="contrasena">Contraseña: </label>
-            <input id="contrasena" type="password" name="contrasena">
-        </div>
-        <div>
-            <button id="btnIngresar">Ingresar</button>
-            <button id="btnCancelar">Cancelar</button>
-        </div>
+        <form action="http://localhost:5000/consultarUsuario/" method="post">
+            <div>
+                <label for="email">Email: </label>
+                <input id="email" type="text" name="email">
+            </div>
+            <div>
+                <label for="contrasena">Contraseña: </label>
+                <input id="contrasena" type="password" name="contrasena">
+            </div>
+            <div>
+                <button type="submit" id="btnIngresar">Ingresar</button>
+                <button type="button" id="btnCancelar" onclick="location.reload();">Cancelar</button>
+            </div>
+        </form>
         <div>
             <label for="contrasena"><a href="Registro_Usuario.html">¿Aún no tienes una cuenta?</a></label>
         </div>
