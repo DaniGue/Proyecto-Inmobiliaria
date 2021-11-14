@@ -10,7 +10,7 @@ var modeloUsuario = require('./usuarios');
 //Insertar inmueble
 app.post("/insertarInmueble", (req, res) => {
     var myobj = {
-        nombre: req[0].nombre,
+        nombre: req.nombre,
         tipo: 'defecto',
         imagen: 'defecto',
         ubicacion: 'Bogota'
@@ -25,9 +25,11 @@ app.post("/insertarInmueble", (req, res) => {
 //Insertar usuario
 app.post("/insertarUsuario", (req, res) => {
     var myobj = {
-        cedula: req[0].cedula,
-        nombre: req[0].nombre,
-        clave: req[0].clave
+        cedula: req.cedula,
+        nombre: req.nombre,
+        apellido: req.apellido,
+        email: req.email,
+        contrasena: req.contrasena
     };
     modeloUsuario.collection.insertOne(myobj, function (err, res) {
         if (err) {
@@ -35,4 +37,9 @@ app.post("/insertarUsuario", (req, res) => {
         }
         console.log('1 usuario insertado');
     });
+});
+//consultar usuario
+app.get("/consultarUsuario", (req, res) => {
+   var resultado= modeloUsuario.collection.findOne({ email: req.email, contrasena: req.contrasena });
+   res.send(JSON.stringify(resultado));  
 });

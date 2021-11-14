@@ -7,4 +7,4 @@ const inmuebleSchema = mongoose.Schema({
     ubicacion: { type: String }
 });
 
-module.exports=mongoose.model('inmueble',inmuebleSchema);
+module.exports=mongoose.model('inmuebles',inmuebleSchema);
