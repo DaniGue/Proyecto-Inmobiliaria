@@ -26,18 +26,25 @@ app.use(express.static("./public"));
 
 //#region INMUEBLE
 app.post("/insertarInmueble", (req, res) => {
-    var myobj = {
+    var inmueble =new modeloInmueble( {
         nombre: req.body.nombre,
         tipo: 'defecto',
         imagen: 'defecto',
         ubicacion: 'Bogota'
-    };
-    modeloInmueble.collection.insertOne(myobj, function (err, res) {
+    });
+    inmueble.save(function(err,datos){
         if (err) {
+            console.error(err);
             throw err;
         }
-        console.log('1 inmueble insertado');
+        res.redirect('/');
     });
+    // modeloInmueble.collection.insertOne(myobj, function (err, res) {
+    //     if (err) {
+    //         throw err;
+    //     }
+    //     console.log('1 inmueble insertado');
+    // });
 });
 //#endregion INMUEBLE
 //#region USUARIO
