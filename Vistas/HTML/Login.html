@@ -2,29 +2,31 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ingresar</title>
-    <link rel="stylesheet" type="text/css" href="../CSS/Estilos_RegLogU.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/Estilos_RegLogU.css" />
     <link rel="shortcut icon" href="../Imagenes/form.ico" type="image/x-icon" />
 </head>
 
 <body>
     <div class="Section2">
-        <img src="../Imagenes/Logo.png">
-        <legend><br>Ingresar</legend>
+        <img src="../Imagenes/Logo.png" />
+        <legend><br />Ingresar</legend>
         <form action="http://localhost:5000/consultarUsuario/" method="post">
             <div>
                 <label for="email">Email: </label>
-                <input id="email" type="text" name="email">
+                <input id="email" type="text" name="email" />
             </div>
             <div>
                 <label for="contrasena">Contraseña: </label>
-                <input id="contrasena" type="password" name="contrasena">
+                <input id="contrasena" type="password" name="contrasena" />
             </div>
             <div>
                 <button type="submit" id="btnIngresar">Ingresar</button>
-                <button type="button" id="btnCancelar" onclick="location.reload();">Cancelar</button>
+                <button type="button" id="btnCancelar" onclick="location.reload();">
+                    Cancelar
+                </button>
             </div>
         </form>
         <div>
@@ -32,6 +34,5 @@
         </div>
     </div>
 </body>
-
 
 </html>
