@@ -1,0 +1,44 @@
+<html ng-app="App" id="App">
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Ubicaciones</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="./Angularmain.js"></script>
+    <link rel="stylesheet" type="text/css" href="Estilos.css">
+    <link rel="shortcut icon" href="form.ico" type="image/x-icon" />
+
+</head>
+
+<body ng-controller="controlador">
+    
+    {{msg3}}
+
+    <form>
+        <div class="Section2">
+            <img src="Logo.png">
+            <legend><br>Registro Ubicaciones</legend>
+            <label for="valor">Dapartamento</label><br>
+            <input type="text" class="form-control input-lg text-center" placeholder="Inserta el Departamento"
+                ng-model="formData.departamento"><br>
+
+            <label for="valor">Ciudad</label><br>
+            <input type="text" class="form-control input-lg text-center" placeholder="Inserte Ciudad"
+                ng-model="formData.ciudad"><br>
+
+            <label for="valor">Ubicación</label><br>
+            <input type="text" class="form-control input-lg text-center" placeholder="Ubicación del Inmueble"
+            ng-model="formData.ubicacion"><br>
+
+
+            {{todos}}
+
+
+        </div>
+        <button class="btnRegistrar" ng-click="crearUbicacion()">Crear Ubicación</button>
+    </form>
+
+
+</body>
+
+</html>

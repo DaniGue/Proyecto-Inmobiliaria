@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+
+    <link rel="stylesheet" type="text/css" href="Estilos.css">
+    <link rel="shortcut icon" href="form.ico" type="image/x-icon" />
+    
+</head>
+
+<body>
+    <div class="Section2">
+        <img src="Logo.png">
+        <legend><br>Registro</legend>
+        <form action="http://localhost:5000/insertarUsuario/" method="post">
+            <div>
+                <label for="cedula">Cédula: </label>
+                <input id="cedula" type="text" name="cedula">
+            </div>
+            <div>
+                <label for="nombre">Nombre:</label>
+                <input id="nombre" type="text" name="nombre">
+            </div>
+            <div>
+                <label for="apellido">Apellido:</label>
+                <input id="apellido" type="text" name="apellido">
+            </div>
+            <div>
+                <label for="email">Email: </label>
+                <input id="email" type="text" name="email">
+            </div>
+            <div>
+                <label for="contrasena">Contraseña: </label>
+                <input id="contrasena" type="password" name="contrasena">
+            </div>
+            <div>
+                <button type="submit" id="btnRegistrar">Registrarse</button>
+                <button type="button" id="btnCancelar" onclick="location.reload();">Cancelar</button>
+            </div>
+        </form>
+        <div>
+            <label for="contrasena"><a href="#">¿Ya tienes una cuenta?</a></label>
+        </div>
+        <div>
+            <label for="Inmueble"><a href='./inmuebles.html'>Inmuebles</a></label>
+        </div>
+        <div>
+            <a href='./ubicaciones.html' id="lbtnTest"> ubicaciones </a><br>
+        </div>
+    </div>
+</body>
+
+
+</html>

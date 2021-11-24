@@ -1,0 +1,16 @@
+{
+  "name": "ProyectoInmuebles",
+  "version": "0.0.0",
+  "description": "ProyectoInmuebles",
+  "author": {
+    "name": ""
+  },
+  "dependencies": {
+    "@angular/cli": "^13.0.2",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongodb": "^4.1.4",
+    "mongoose": "^6.0.12",
+    "multer": "^1.4.3"
+  }
+}

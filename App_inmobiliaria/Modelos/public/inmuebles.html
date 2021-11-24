@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="Estilos.css">
+    <link rel="shortcut icon" href="form.ico" type="image/x-icon" />
+    <title>Registro Inmuebles</title>
+</head>
+
+<body>
+    <div class="Section2">
+        <img src="Logo.png">
+        <legend><br>Registro Inmuebles</legend>
+        <form action="http://localhost:5000/insertarInmueble/" method="post">
+            <div>
+                <label for="nombre">Nombre:</label>
+                <input id="nombre" type="text" name="nombre">
+            </div>
+            <div>
+                <label for="imagen">Imagen</label>
+            </div>
+            <div>
+                <label for="tipo">Tipo: </label>
+                <input id="tipo" type="text" name="tipo">
+            </div>
+            <div>
+                <label for="ubicacion">Ubicación: </label>
+                <input id="ubicacion" type="text" name="ubicacion">
+            </div>
+            <div>
+                <button type="submit" id="btnRegistrar">Registrarse</button>
+                <button type="button" id="btnCancelar">Cancelar</button>
+                
+            </div>
+        </form>
+    </div>
+</body>
+</html>
