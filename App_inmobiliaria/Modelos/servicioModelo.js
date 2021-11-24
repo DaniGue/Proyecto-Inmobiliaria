@@ -70,7 +70,8 @@ app.post("/insertarUbicacion", (req, res) => {
 
 //------------OK-----------------------
 app.post("/insertarInmueble", (req, res) => {
-  modeloUbicaciones.find({ubicacion:req.body.ubicacion}, (err, docs) => {
+  modeloUbicaciones.find({_id:req.body.ubicacion}, (err, docs) => {
+    console.log(docs);
     var myobj = { nombre:req.body.nombre , tipo:req.body.tipo, ubicacion: docs[0]._id  };
     modeloInmueble.collection.insertOne(myobj, function(err, res) {
     if (err) throw err;
