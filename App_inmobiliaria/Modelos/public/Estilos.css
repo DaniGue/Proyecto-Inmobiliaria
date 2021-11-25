@@ -37,9 +37,9 @@ legend{
     top: 11%;
   }
 
-div{
+/* div{
     margin: 15px;
-}
+} */
 button{
     border:1px solid #030d4f;
     font-size: 12pt;
@@ -47,17 +47,17 @@ button{
     color: white;
     border-radius: 10px;
 }
-#btnRegistrar, #btnIngresar{
+/* #btnRegistrar, #btnIngresar{
     background-color: #030d4fec;
-}
+} */
 
 button:hover{
     color:black;
     opacity: 0.9;
 }
-#btnCancelar{
+/* #btnCancelar{
     background-color: rgb(255, 22, 22);
-}
+} */
 input{
     outline: none;
     width: 85%;
@@ -75,9 +75,9 @@ input[type="text"], input[type="password"]{
     font-size: 16px;
     }
 
-    label{
+    /* label{
         margin: 10%;
-    }
+    } */
 
 input:focus{
     background: linear-gradient(90deg, rgba(78,78,78,0.26094187675070024) 0%, rgba(50,22,231,0.3925945378151261) 57%, rgba(95,255,251,0.22172619047619047) 100%);

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="AppInmobiliaria" id="AppInmobiliaria">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ingresar</title>
+    <link rel="stylesheet" type="text/css" href="Estilos.css" />
+    <link rel="shortcut icon" href="form.ico" type="image/x-icon" />
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"  type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js" type="text/javascript"></script>
+    <script src="AngularController.js"  type="text/javascript"></script>
+</head>
+
+<body ng-controller="autenticacion">
+    <div class="Section2">
+        <img src="Logo.png" />
+        <legend><br />Ingresar</legend>
+        <form action="#" method="post">
+            <div>
+                <label for="email">Email: </label>
+                <input id="email" type="text" name="email" ng-model="formData.email"/>
+            </div>
+            <div>
+                <label for="contrasena">Contraseña: </label>
+                <input id="contrasena" type="password" name="contrasena"ng-model="formData.contrasena" />
+            </div>
+            <div>
+                <button type="button" id="btnIngresar" ng-click="autenticarUsuario();">Ingresar</button>
+                <button type="button" id="btnCancelar" onclick="location.reload();">
+                    Cancelar
+                </button>
+            </div>
+        </form>
+        <div>
+            <label for="contrasena"><a href="../">¿Aún no tienes una cuenta?</a></label>
+        </div>
+    </div>
+</body>
+
+</html>
