@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    background-color:#161616;
+    font-weight: 600;
+    color: #030d4f;
+    background: url(/assets/Fondo.png) no-repeat center top;
+    background-size: cover;
+    font-family: sans-serif;
+    height:100%; /*calc(100vh - 56px);  */
+}

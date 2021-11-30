@@ -1,0 +1,60 @@
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha512-U6K1YLIFUWcvuw5ucmMtT9HH4t0uz3M366qrF5y4vnyH6dgDzndlcGvH/Lz5k8NFh80SN95aJ5rqGZEdaQZ7ZQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.min.js"type="text/javascript"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" type="text/javascript"></script>
+
+
+    <div class="container-fluid">
+        <div class="Section2 col-3 me-auto ms-auto">
+            <img src="assets/Logo.png">
+            <legend><br>Registro</legend>
+            <form action="#" method="post" class="container">
+                <div class="row m-1">
+                    <div class="col">
+                        <label for="cedula" class="form-label">Cédula: </label>
+                        <input id="cedula" type="text" name="cedula" class="form-control">
+                    </div>
+                </div>
+                <div class="row m-1">
+                    <div class="col">
+                        <label for="nombre" class="form-label">Nombre:</label>
+                        <input id="nombre" type="text" name="nombre" class="form-control">
+                    </div>
+                </div>
+                <div class="row m-1">
+                    <div class="col">
+                        <label for="apellido" class="form-label">Apellido:</label>
+                        <input id="apellido" type="text" name="apellido" class="form-control">
+                    </div>
+                </div>
+                <div class="row m-1">
+                    <div class="col">
+                        <label for="email" class="form-label">Email: </label>
+                        <input id="email" type="text" name="email" class="form-control">
+                    </div>
+                </div>
+                <div class="row m-1 mb-4">
+                    <div class="col">
+                        <label for="contrasena" class="form-label">Contraseña: </label>
+                        <input id="contrasena" type="password" name="contrasena" class="form-control">
+                    </div>
+                </div>
+                <div class="row m-1 gx-1">
+                    <div class="col">
+                        <button type="button" id="btnRegistrar" (click)="crearUsuario();" class="btn btn-primary m-1"><i class="fas fa-save"></i> Registrarse</button>
+                        <button type="button" id="btnCancelar" onclick="location.reload();" class="btn btn-danger m-1"><i class="fas fa-window-close"></i> Cancelar</button>
+                    </div>
+                </div>
+
+            </form>
+            <div class="row m-1">
+                <div class="col">
+                    <a href="usuario/ingresar">¿Ya tienes una cuenta?</a>
+                </div>
+            </div>
+            
+
+        </div>
+    </div>

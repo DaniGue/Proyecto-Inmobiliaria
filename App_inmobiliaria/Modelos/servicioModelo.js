@@ -3,10 +3,12 @@ const { createReadStream } = require('fs')
 var modeloUsuario = require('./usuarios')
 var modeloUbicaciones = require('./ubicaciones')
 var modeloInmueble = require('./inmuebles')
+var cors = require('cors');
+
 
 const app = new express();
 const HTML_CONTENT_TYPE = 'text/html'
-
+app.use(cors);
 
 const bodyParser = require("body-parser");
 
