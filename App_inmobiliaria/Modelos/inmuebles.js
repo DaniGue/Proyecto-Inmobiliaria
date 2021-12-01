@@ -5,7 +5,8 @@ const inmuebleSchema = mongoose.Schema({
     nombre: { type: String },
     tipo: { type: String },
     //imagen: { type: String },
-    ubicacion: { type: ObjectId }
+    ubicacion: { type: ObjectId },
+    precio:{type:String}
 });
 
 module.exports=mongoose.model('inmueble',inmuebleSchema);

@@ -78,8 +78,7 @@ app.post("/consultarUsuario", (req, res) => {
 app.post("/insertarUbicacion", (req, res) => {
   var myobj = {
     departamento: req.body.departamento,
-    ciudad: req.body.ciudad,
-    ubicacion: req.body.ubicacion
+    ciudad: req.body.ciudad
   };
   modeloUbicaciones.collection.insertOne(myobj, function (err, result) {
     if (err) {
@@ -126,7 +125,7 @@ app.get("/consultarUbicaciones", (req, res) => {
 
 //------------OK-----------------------
 app.post("/insertarInmueble", (req, res) => {
-  modeloUbicaciones.find({ _id: req.body.ubicacion }, (err, docs) => {
+  modeloUbicaciones.find({ _id: req.body.id }, (err, docs) => {
     //console.log(docs);
     var myobj = { nombre: req.body.nombre, tipo: req.body.tipo, ubicacion: docs[0]._id };
     modeloInmueble.collection.insertOne(myobj, function (err, result) {

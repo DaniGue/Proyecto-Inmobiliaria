@@ -9,6 +9,7 @@ import { IngresarUsuarioComponent } from './usuario/ingresar/ingresar.component'
 import { RegistrarInmuebleComponent } from './inmueble/registrar/registrar.component';
 import { ConsultarInmuebleComponent } from './inmueble/consultar/consultar.component';
 import { ModificarInmuebleComponent } from './inmueble/modificar/modificar.component';
+import { ModificarUbicacionComponent } from './ubicacion/modificar/modificar.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ModificarInmuebleComponent } from './inmueble/modificar/modificar.compo
     IngresarUsuarioComponent,
     RegistrarInmuebleComponent,    
     ConsultarInmuebleComponent,
-    ModificarInmuebleComponent
+    ModificarInmuebleComponent,
+    ModificarUbicacionComponent
   ],
   imports: [
     BrowserModule,
