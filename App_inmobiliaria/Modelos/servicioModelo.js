@@ -51,7 +51,7 @@ app.post("/insertarUsuario", (req, res) => {
   })
   //res.send("Usuario Creado")
 });
-app.post("/consultarUsuario", (req, res) => {
+app.get("/consultarUsuario", (req, res) => {
   modeloUsuario.findOne({ email: req.body.email, contrasena: req.body.contrasena }, function (err, datos) {
     if (err) {
       console.error(err);
@@ -99,24 +99,24 @@ app.post("/insertarUbicacion", (req, res) => {
   //res.send("Ubicacion Creada")
 })
 app.get("/consultarUbicaciones", (req, res) => {
-  modeloUbicaciones.find({}, function (err, datos) {
-    if (err) {
-      console.error(err);
-      let resultado = { resultado: false, datos: err };
-      res.send(resultado);
-      //throw ex;
-    } else {
+    modeloUbicaciones.find({}, function (err, datos) {
+        if (err) {
+            console.error(err);
+            let resultado = { resultado: false, datos: err };
+            res.send(resultado);
+            //throw ex;
+        } else {
 
-      if (datos) {
-        let resultado = { resultado: true, datos: datos };
-        res.send(resultado);
-      } else {
-        let resultado = { resultado: false, datos: "No existen ubicaciones" };
-        res.send(resultado);
-      }
+            if (datos) {
+                let resultado = { resultado: true, datos: datos };
+                res.send(resultado);
+            } else {
+                let resultado = { resultado: false, datos: "No existen ubicaciones" };
+                res.send(resultado);
+            }
 
-    }
-  })
+        }
+    })
 });
 //--------------------------
 
@@ -124,8 +124,8 @@ app.get("/consultarUbicaciones", (req, res) => {
 //#region INMUEBLE
 
 //------------OK-----------------------
-app.post("/insertarInmueble", (req, res) => {
-  modeloUbicaciones.find({ _id: req.body.id }, (err, docs) => {
+app.put("/insertarInmueble", (req, res) => {
+  modeloUbicaciones.find({ _id: req.body.ubicacion }, (err, docs) => {
     //console.log(docs);
     var myobj = { nombre: req.body.nombre, tipo: req.body.tipo, ubicacion: docs[0]._id };
     modeloInmueble.collection.insertOne(myobj, function (err, result) {
@@ -134,7 +134,7 @@ app.post("/insertarInmueble", (req, res) => {
         let resultado = { resultado: false, datos: err };
         res.send(resultado);
         //throw err;
-      }else{
+      } else {
         if (result) {
           let resultado = { resultado: true, datos: result };
           res.send(resultado);
@@ -148,6 +148,81 @@ app.post("/insertarInmueble", (req, res) => {
     //res.send("Inmueble guardado")
   })
 })
+app.put("/modificarInmueble", (req, res) => {
+  modeloUbicaciones.find({ _id: req.body.ubicacion }, (err, docs) => {
+    //console.log(docs);
+    //var myobj = { nombre: req.body.nombre, tipo: req.body.tipo, ubicacion: docs[0]._id };
+    modeloInmueble.find({ _id: req.body._id }, function (err, result) {
+      if (err) {
+        console.error(err);
+        let resultado = { resultado: false, datos: err };
+        res.send(resultado);
+        //throw err;
+      } else {
+        if (result) {
+          var myobj = { _id:req.body._id, nombre: req.body.nombre, tipo: req.body.tipo, ubicacion: docs[0]._id };
+          modeloInmueble.collection.updateOne(myobj, function (errUpdate, resultUpdate) {
+            if (errUpdate) {
+              console.error(errUpdate);
+              let resultado = { resultado: false, datos: errUpdate };
+              res.send(resultado);
+              //throw err;
+            } else {
+              if (resultUpdate) {
+                let resultado = { resultado: true, datos: resultUpdate };
+                  res.send(resultado);
+              } else {
+                let resultado = { resultado: false, datos: "Inmueble no pudo ser actualizado" };
+                res.send(resultado);
+              }
+
+            }
+          });
+
+        } else {
+          let resultado = { resultado: false, datos: "Inmueble no pudo ser encontrado" };
+          res.send(resultado);
+        }
+      }
+
+    })
+    //res.send("Inmueble guardado")
+  })
+});
+app.get("/consultarInmueble", (req, res) => {
+  console.log(req);
+  var filtro = {};
+  if (req.body.nombre) {
+    filtro.nombre = req.body.email;
+  }
+  if (req.body.tipo) {
+    filtro.tipo = tipo;
+  }
+  if (req.body.ubicacion) {
+    filtro.ubicacion = ubicacion;
+  }
+  if (req.body.precio) {
+    filtro.ubicacion = precio;
+  }
+  modeloInmueble.find(filtro, function (err, datos) {
+    if (err) {
+      console.error(err);
+      let resultado = { resultado: false, datos: err };
+      res.send(resultado);
+      //throw ex;
+    } else {
+
+      if (datos) {
+        let resultado = { resultado: true, datos: datos };
+        res.send(resultado);
+      } else {
+        let resultado = { resultado: false, datos: "Inmueble no encontrado" };
+        res.send(resultado);
+      }
+
+    }
+  })
+});
 //-------------------------------------
 
 //#endregion INMUEBLE
