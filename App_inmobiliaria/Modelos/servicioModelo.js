@@ -124,7 +124,7 @@ app.get("/consultarUbicaciones", (req, res) => {
 //#region INMUEBLE
 
 //------------OK-----------------------
-app.put("/insertarInmueble", (req, res) => {
+app.post("/insertarInmueble", (req, res) => {
   modeloUbicaciones.find({ _id: req.body.ubicacion }, (err, docs) => {
     //console.log(docs);
     var myobj = { nombre: req.body.nombre, tipo: req.body.tipo, ubicacion: docs[0]._id };

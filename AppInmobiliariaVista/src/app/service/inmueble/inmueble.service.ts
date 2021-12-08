@@ -12,7 +12,7 @@ export class InmuebleService {
 
   //Registrar inmuebles
   registrarInmuebles(inmueble: any) {
-    this.http.put<any>("http://localhost:5000/insertarInmueble", inmueble).subscribe(data => {
+    this.http.post<any>("http://localhost:5000/insertarInmueble", inmueble).subscribe(data => {
       return data;
     })
   }
