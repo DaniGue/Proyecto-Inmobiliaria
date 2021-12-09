@@ -32,6 +32,6 @@ export class UbicacionService {
     if (ubicacion.ciudad) {
       params = params.append('ciudad', ubicacion.ciudad);
     }
-      return this.http.get("http://localhost:5000/consultarubicacion",{params});
+      return this.http.get("http://localhost:5000/consultarUbicaciones",{params});
     }
 }

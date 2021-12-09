@@ -15,7 +15,7 @@ import { ModificarUbicacionComponent } from './ubicacion/modificar/modificar.com
   declarations: [
     AppComponent,
     IngresarUsuarioComponent,
-    RegistrarInmuebleComponent,    
+    RegistrarInmuebleComponent,
     ConsultarInmuebleComponent,
     ModificarInmuebleComponent,
     ModificarUbicacionComponent

@@ -5,7 +5,7 @@ const inmuebleSchema = mongoose.Schema({
     nombre: { type: String },
     tipo: { type: String },
     //imagen: { type: String },
-    ubicacion: { type: ObjectId },
+    ubicacion: { type: mongoose.Schema.ObjectId, ref: "Ubicaciones" },
     precio:{type:String}
 });
 

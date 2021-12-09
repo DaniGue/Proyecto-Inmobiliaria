@@ -8,7 +8,28 @@ var cors = require('cors');
 
 const app = new express();
 const HTML_CONTENT_TYPE = 'text/html'
-app.use(cors);
+//app.use(cors);
+// Add headers before the routes are defined
+app.use(function (req, res, next) {
+
+  // Website you wish to allow to connect
+  res.setHeader('Access-Control-Allow-Origin', '*');
+
+  // Request methods you wish to allow
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+  // Request headers you wish to allow
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+  // Set to true if you need the website to include cookies in the requests sent
+  // to the API (e.g. in case you use sessions)
+  res.setHeader('Access-Control-Allow-Credentials', true);
+
+  // Pass to next layer of middleware
+  next();
+});
+
+
 
 const bodyParser = require("body-parser");
 
@@ -99,24 +120,24 @@ app.post("/insertarUbicacion", (req, res) => {
   //res.send("Ubicacion Creada")
 })
 app.get("/consultarUbicaciones", (req, res) => {
-    modeloUbicaciones.find({}, function (err, datos) {
-        if (err) {
-            console.error(err);
-            let resultado = { resultado: false, datos: err };
-            res.send(resultado);
-            //throw ex;
-        } else {
+  modeloUbicaciones.find({}, function (err, datos) {
+    if (err) {
+      console.error(err);
+      let resultado = { resultado: false, datos: err };
+      res.send(resultado);
+      //throw ex;
+    } else {
 
-            if (datos) {
-                let resultado = { resultado: true, datos: datos };
-                res.send(resultado);
-            } else {
-                let resultado = { resultado: false, datos: "No existen ubicaciones" };
-                res.send(resultado);
-            }
+      if (datos) {
+        let resultado = { resultado: true, datos: datos };
+        res.send(resultado);
+      } else {
+        let resultado = { resultado: false, datos: "No existen ubicaciones" };
+        res.send(resultado);
+      }
 
-        }
-    })
+    }
+  })
 });
 //--------------------------
 
@@ -125,28 +146,28 @@ app.get("/consultarUbicaciones", (req, res) => {
 
 //------------OK-----------------------
 app.post("/insertarInmueble", (req, res) => {
-  modeloUbicaciones.find({ _id: req.body.ubicacion }, (err, docs) => {
-    //console.log(docs);
-    var myobj = { nombre: req.body.nombre, tipo: req.body.tipo, ubicacion: docs[0]._id };
-    modeloInmueble.collection.insertOne(myobj, function (err, result) {
-      if (err) {
-        console.error(err);
-        let resultado = { resultado: false, datos: err };
+  //modeloUbicaciones.find({ _id: req.body.ubicacion }, (err, docs) => {
+  //console.log(docs);
+  var myobj = { nombre: req.body.nombre, tipo: req.body.tipo, ubicacion: req.body.ubicacion, precio: req.body.precio };
+  modeloInmueble.collection.insertOne(myobj, function (err, result) {
+    if (err) {
+      console.error(err);
+      let resultado = { resultado: false, datos: err };
+      res.send(resultado);
+      //throw err;
+    } else {
+      if (result) {
+        let resultado = { resultado: true, datos: result };
         res.send(resultado);
-        //throw err;
       } else {
-        if (result) {
-          let resultado = { resultado: true, datos: result };
-          res.send(resultado);
-        } else {
-          let resultado = { resultado: false, datos: "Inmueble no pudo ser registrado" };
-          res.send(resultado);
-        }
+        let resultado = { resultado: false, datos: "Inmueble no pudo ser registrado" };
+        res.send(resultado);
       }
+    }
 
-    })
-    //res.send("Inmueble guardado")
   })
+  //res.send("Inmueble guardado")
+  //})
 })
 app.put("/modificarInmueble", (req, res) => {
   modeloUbicaciones.find({ _id: req.body.ubicacion }, (err, docs) => {
@@ -160,7 +181,7 @@ app.put("/modificarInmueble", (req, res) => {
         //throw err;
       } else {
         if (result) {
-          var myobj = { _id:req.body._id, nombre: req.body.nombre, tipo: req.body.tipo, ubicacion: docs[0]._id };
+          var myobj = { _id: req.body._id, nombre: req.body.nombre, tipo: req.body.tipo, ubicacion: docs[0]._id };
           modeloInmueble.collection.updateOne(myobj, function (errUpdate, resultUpdate) {
             if (errUpdate) {
               console.error(errUpdate);
@@ -170,7 +191,7 @@ app.put("/modificarInmueble", (req, res) => {
             } else {
               if (resultUpdate) {
                 let resultado = { resultado: true, datos: resultUpdate };
-                  res.send(resultado);
+                res.send(resultado);
               } else {
                 let resultado = { resultado: false, datos: "Inmueble no pudo ser actualizado" };
                 res.send(resultado);
@@ -192,35 +213,38 @@ app.put("/modificarInmueble", (req, res) => {
 app.get("/consultarInmueble", (req, res) => {
   console.log(req);
   var filtro = {};
-  if (req.body.nombre) {
-    filtro.nombre = req.body.email;
+  if (req.query.nombre) {
+    filtro.nombre = { "$regex": req.query.nombre, "$options": "i" };
   }
-  if (req.body.tipo) {
-    filtro.tipo = tipo;
+  if (req.query.tipo) {
+    filtro.tipo = req.query.tipo;
   }
-  if (req.body.ubicacion) {
-    filtro.ubicacion = ubicacion;
+  if (req.query.ubicacion) {
+    filtro.ubicacion = req.query.ubicacion;
   }
-  if (req.body.precio) {
-    filtro.ubicacion = precio;
+  if (req.query.precio) {
+    filtro.precio = { "$regex": req.query.precio, "$options": "i" };
   }
-  modeloInmueble.find(filtro, function (err, datos) {
-    if (err) {
-      console.error(err);
-      let resultado = { resultado: false, datos: err };
-      res.send(resultado);
-      //throw ex;
-    } else {
-
-      if (datos) {
-        let resultado = { resultado: true, datos: datos };
+  modeloInmueble.find(filtro, function (err, inmuebles) {
+    modeloUbicaciones.populate(inmuebles, { path: "ubicacion" }, function (err, datos) {
+      if (err) {
+        console.error(err);
+        let resultado = { resultado: false, datos: err };
         res.send(resultado);
+        //throw ex;
       } else {
-        let resultado = { resultado: false, datos: "Inmueble no encontrado" };
-        res.send(resultado);
-      }
 
-    }
+        if (datos) {
+          let resultado = { resultado: true, datos: datos };
+          res.send(resultado);
+        } else {
+          let resultado = { resultado: false, datos: "Inmueble no encontrado" };
+          res.send(resultado);
+        }
+
+      }
+    });
+
   })
 });
 //-------------------------------------
