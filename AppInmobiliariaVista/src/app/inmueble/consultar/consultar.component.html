@@ -1,40 +1,77 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"
-    integrity="sha512-U6K1YLIFUWcvuw5ucmMtT9HH4t0uz3M366qrF5y4vnyH6dgDzndlcGvH/Lz5k8NFh80SN95aJ5rqGZEdaQZ7ZQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"
-    type="text/javascript"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.min.js"
-    type="text/javascript"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" type="text/javascript"></script>
+
 
 
 <div class="container-fluid">
-    <div class="Section2 col-3 me-auto ms-auto">
-        <img src="assets/Logo.png">
-        <legend><br>Consultar inmueble</legend>
-        <form action="#" method="post" class="container">
-            <div class="row m-1">
-                <div class="col">
-                    <label for="nombre" class="form-label">Nombre: </label>
-                    <input id="nombre" type="text" name="nombre" class="form-control">
-                </div>
-                <div class="col">
-                    <label for="tipo" class="form-label">Tipo:</label>
-                    <input id="tipo" type="text" name="tipo" class="form-control">
-                </div>
-                <div class="col">
-                    <label for="ubicacion" class="form-label">Ubicacion:</label>
-                    <select id="ubicacion" name="ubicacion"  class="form-select" *ngFor="let ubicacion of listaUbicaciones">
-                            <option value="{{ubicacion._id}}">{{ubicacion.departamento}} - {{ubicacion.ciudad}}</option>
-                    </select>
-                </div>
-                <div class="col">
-                    <label for="precio" class="form-label">Precio:</label>
-                    <input id="precio" type="text" name="precio" class="form-control">
-                </div>
-            </div>
-        </form>
+  <div class="row">
+    <div class="Section2 col-8 me-auto ms-auto">
+      <!-- <img src="assets/Logo.png"> -->
+      <legend><br>Consultar inmueble</legend>
+      <form action="#" method="post" class="container">
+        <div class="row m-1">
+          <div class="col">
+            <label for="nombre" class="form-label">Nombre: </label>
+            <input id="nombre" type="text" name="nombre" class="form-control">
+          </div>
+          <div class="col">
+            <label for="tipo" class="form-label">Tipo:</label>
+            <select id="tipo" name="tipo" class="form-select">
+              <option value="">(Seleccione Tipo)</option>
+              <option value="casa">Casa</option>
+              <option value="apartamento">Apartamento</option>
+            </select>
+          </div>
+          <div class="col">
+            <label for="ubicacion" class="form-label">Ubicacion:</label>
+            <select id="ubicacion" name="ubicacion" class="form-select" *ngFor="let ubicacion of listaUbicaciones">
+              <option value="">(Seleccione Ubicacion)</option>
+              <option value="{{ubicacion._id}}">{{ubicacion.departamento}} - {{ubicacion.ciudad}}</option>
+            </select>
+          </div>
+          <div class="col">
+            <label for="precio" class="form-label">Precio:</label>
+            <input id="precio" type="number" min="1000000" step="1000000" name="precio" class="form-control">
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col">
+            <button type="button" name="Filtrar" class="btn btn-primary m-1" (click)="consultarInmueblesFiltro()"><i
+                class="fas fa-search"></i> Filtrar</button>
+            <button type="button" name="Limpiar" class="btn btn-dark m-1" (click)="reloadCurrentPage()"><i
+                class="fas fa-eraser"></i> Limpiar</button>
+          </div>
+        </div>
+      </form>
     </div>
+  </div>
 
+  <div class="row">
+    <div class="Section2 col-8 me-auto ms-auto p-0">
+      <table id="tbl_Inmuebles"  class="table table-striped table-hover table-responsive" >
+        <thead>
+          <th>Nombre</th>
+          <th>Tipo</th>
+          <th>Ubicacion</th>
+          <th>Precio</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let inmueble of listaInmuebles">
+            <td>
+              {{inmueble.nombre}}
+            </td>
+            <td>
+              {{inmueble.tipo}}
+            </td>
+            <td>
+              {{inmueble.ubicacion.departamento}} - {{inmueble.ubicacion.ciudad}}
+            </td>
+            <td>
+              {{inmueble.precio}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
 </div>
+
