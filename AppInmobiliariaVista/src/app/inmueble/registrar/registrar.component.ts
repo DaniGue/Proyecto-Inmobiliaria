@@ -12,6 +12,7 @@ import swal from 'sweetalert2';
 export class RegistrarInmuebleComponent implements OnInit {
   inmueble: any;
   listaUbicaciones: any;
+  archivos:any;
   constructor(private inmueble_Service: InmuebleService, private ubicacion_Service: UbicacionService, private http: HttpClient) {
     this.inmueble = ""
   }
@@ -40,7 +41,7 @@ export class RegistrarInmuebleComponent implements OnInit {
           text: "Serás redireccionado a la pantalla principal!",
           icon: "success",
           allowOutsideClick: false
-        }).then((result) => {
+        }).then(() => {
           window.location.href = '../';
         });
       } else {
@@ -69,5 +70,16 @@ export class RegistrarInmuebleComponent implements OnInit {
   }
   reloadCurrentPage() {
     window.location.reload();
+  }
+
+  setFile(event:any){
+
+  }
+  guardarImagen(){
+    let formData=new FormData();
+      formData.append("files",this.archivos[0]);
+      this.inmueble_Service.guardarImagenInmueble(formData).subscribe(data=>{
+
+      });
   }
 }

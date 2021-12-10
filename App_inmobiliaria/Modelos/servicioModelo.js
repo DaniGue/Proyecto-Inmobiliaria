@@ -1,5 +1,6 @@
 const express = require("express");
-const { createReadStream } = require('fs')
+//const { createReadStream, fstat,renameSync } = require('fs')
+let fs = require('fs');
 var modeloUsuario = require('./usuarios')
 var modeloUbicaciones = require('./ubicaciones')
 var modeloInmueble = require('./inmuebles')
@@ -36,10 +37,12 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use(express.static(__dirname + "\\public"));
-
 const path = require("path");
-
+app.use(express.static(__dirname + "\\public"));
+const multer = require("multer");
+let objMulter = multer({ dest: "./public" });
+// Instantiate multer, el objeto de parámetro pasado, dest representa la ruta de almacenamiento del archivo cargado
+app.use(objMulter.any())
 require('./conexion')
 
 //#region USUARIO
@@ -247,13 +250,23 @@ app.get("/consultarInmueble", (req, res) => {
 
   })
 });
+app.post("/guardarImagenInmueble", (req, res) => {
+  let archivo = req.files[0].originalname;//Nombre original del archivo
+  let oldName = req.files[0].path;//Obtener nombre con ruta completa publica almacenada
+  let newName = req.files[0].path + path.parse(req.files[0].originalname).ext;//Nombre del archivo con extension
+  fs.renameSync(oldName, newName);
+  console.log(archivo);
+
+  const dir = "http://localhost:5000/" + req.files[0].filename + path.parse(req.files[0].originalname).ext
+
+});
 //-------------------------------------
 
 //#endregion INMUEBLE
 
 app.get('/', (req, res) => {
   res.writeHead(200, { 'Content-Type': HTML_CONTENT_TYPE })
-  createReadStream('./index.html').pipe(res)
+  fs.createReadStream('./index.html').pipe(res)
 })
 
 app.listen(5000, () => {

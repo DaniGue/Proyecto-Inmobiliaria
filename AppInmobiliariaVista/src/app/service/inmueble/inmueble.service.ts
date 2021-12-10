@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 
 @Injectable({
@@ -39,5 +39,17 @@ export class InmuebleService {
     }
     return this.http.get("http://localhost:5000/consultarInmueble", { params });
     //this.http.get("http://localhost:5000/consultarInmueble");
+  }
+
+  //Guardar Imagen
+  guardarImagenInmueble(formData:any){
+    try{
+      let headers=new HttpHeaders();
+      headers.set('enctype', 'multipart/form-data');
+      return this.http.post("http://localhost:5000/guardarImagenInmueble",formData,{headers:headers});
+    }catch(ex){
+      console.error(ex);
+      throw ex;
+    }
   }
 }
