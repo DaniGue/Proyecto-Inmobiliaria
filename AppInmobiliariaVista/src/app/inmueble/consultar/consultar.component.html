@@ -20,6 +20,7 @@
               <option value="apartamento">Apartamento</option>
             </select>
           </div>
+          
           <div class="col">
             <label for="ubicacion" class="form-label">Ubicacion:</label>
             <select id="ubicacion" name="ubicacion" class="form-select" >
@@ -27,6 +28,7 @@
               <option *ngFor="let ubicacion of listaUbicaciones" value="{{ubicacion._id}}">{{ubicacion.departamento}} - {{ubicacion.ciudad}}</option>
             </select>
           </div>
+
           <div class="col">
             <label for="precio" class="form-label">Precio:</label>
             <input id="precio" type="number" min="1000000" step="1000000" name="precio" class="form-control">
