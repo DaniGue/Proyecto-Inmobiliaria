@@ -36,10 +36,9 @@
             <div class="row m-1">
                 <div class="col">
                     <label for="ubicacion" class="form-label">Ubicacion:</label>
-                    <select id="ubicacion" name="ubicacion" class="form-select"
-                    *ngFor="let ubicacion of listaUbicaciones">
+                    <select id="ubicacion" name="ubicacion" class="form-select">
                     <option value="">(Seleccione Ubicacion)</option>
-                    <option value="{{ubicacion._id}}">{{ubicacion.departamento}} - {{ubicacion.ciudad}}</option>
+                    <option *ngFor="let ubicacion of listaUbicaciones" value="{{ubicacion._id}}">{{ubicacion.departamento}} - {{ubicacion.ciudad}}</option>
                 </select>
                 </div>
             </div>
