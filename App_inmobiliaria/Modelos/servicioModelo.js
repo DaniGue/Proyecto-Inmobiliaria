@@ -5,7 +5,7 @@ var modeloUsuario = require('./usuarios')
 var modeloUbicaciones = require('./ubicaciones')
 var modeloInmueble = require('./inmuebles')
 var cors = require('cors');
-
+var ObjectId = require('mongoose').Types.ObjectId; 
 
 const app = new express();
 const HTML_CONTENT_TYPE = 'text/html'
@@ -151,7 +151,7 @@ app.get("/consultarUbicaciones", (req, res) => {
 app.post("/insertarInmueble", (req, res) => {
   //modeloUbicaciones.find({ _id: req.body.ubicacion }, (err, docs) => {
   //console.log(docs);
-  var myobj = { nombre: req.body.nombre, tipo: req.body.tipo, ubicacion: req.body.ubicacion, precio: req.body.precio };
+  var myobj = { nombre: req.body.nombre, tipo: req.body.tipo, ubicacion: new ObjectId(req.body.ubicacion), precio: req.body.precio };
   modeloInmueble.collection.insertOne(myobj, function (err, result) {
     if (err) {
       console.error(err);
@@ -223,7 +223,7 @@ app.get("/consultarInmueble", (req, res) => {
     filtro.tipo = req.query.tipo;
   }
   if (req.query.ubicacion) {
-    filtro.ubicacion = req.query.ubicacion;
+    filtro.ubicacion = new ObjectId(req.query.ubicacion);
   }
   if (req.query.precio) {
     filtro.precio = { "$regex": req.query.precio, "$options": "i" };
