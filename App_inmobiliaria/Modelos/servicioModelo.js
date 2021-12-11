@@ -5,7 +5,7 @@ var modeloUsuario = require('./usuarios')
 var modeloUbicaciones = require('./ubicaciones')
 var modeloInmueble = require('./inmuebles')
 var cors = require('cors');
-var ObjectId = require('mongoose').Types.ObjectId; 
+var ObjectId = require('mongoose').Types.ObjectId;
 
 const app = new express();
 const HTML_CONTENT_TYPE = 'text/html'
@@ -76,7 +76,7 @@ app.post("/insertarUsuario", (req, res) => {
   //res.send("Usuario Creado")
 });
 app.get("/consultarUsuario", (req, res) => {
-  modeloUsuario.findOne({ email: req.body.email, contrasena: req.body.contrasena }, function (err, datos) {
+  modeloUsuario.findOne({ email: req.query.email, contrasena: req.query.contrasena }, function (err, datos) {
     if (err) {
       console.error(err);
       let resultado = { resultado: false, datos: err };
@@ -151,7 +151,21 @@ app.get("/consultarUbicaciones", (req, res) => {
 app.post("/insertarInmueble", (req, res) => {
   //modeloUbicaciones.find({ _id: req.body.ubicacion }, (err, docs) => {
   //console.log(docs);
-  var myobj = { nombre: req.body.nombre, tipo: req.body.tipo, ubicacion: new ObjectId(req.body.ubicacion), precio: req.body.precio };
+  //#region Guardar Imagen
+  let archivo = req.files[0].originalname;//Nombre original del archivo
+  let oldName = req.files[0].path;//Obtener nombre con ruta completa publica almacenada
+  let newName = path.parse(req.files[0].path).dir + "\\imagenesInmuebles\\" + req.files[0].filename + path.parse(req.files[0].originalname).ext;//Nombre del archivo con extension
+  //Check that if directory is present or not.
+  if (!fs.existsSync(path.parse(req.files[0].path).dir + "\\imagenesInmuebles\\")) {
+    fs.mkdirSync(path.parse(req.files[0].path).dir + "\\imagenesInmuebles\\");
+  }
+  fs.renameSync(oldName, newName);
+  console.log(archivo);
+
+  const rutaImagen = "http://localhost:5000/imagenesInmuebles/" + req.files[0].filename + path.parse(req.files[0].originalname).ext
+  //#endregion Guardar Imagen
+
+  var myobj = { nombre: req.body.nombre, tipo: req.body.tipo, ubicacion: new ObjectId(req.body.ubicacion), precio: req.body.precio, imagen: rutaImagen };
   modeloInmueble.collection.insertOne(myobj, function (err, result) {
     if (err) {
       console.error(err);

@@ -10,9 +10,7 @@ export class UbicacionService {
 
      //Registrar ubicacion
      registrarUbicacion(ubicacion: any) {
-    this.http.put<any>("http://localhost:5000/insertarUbicacion", ubicacion).subscribe(data => {
-      return data;
-     })
+    return this.http.post<any>("http://localhost:5000/insertarUbicacion", ubicacion);
      }
     //Modificar ubicacion
     modificarUbicacion(ubicacion: any) {

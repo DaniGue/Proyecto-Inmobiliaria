@@ -11,12 +11,7 @@
             <img src="assets/Logo.png">
             <legend><br>Registrar Ubicación</legend>
             <form action="#" method="post" class="container">
-                <div class="row m-1">
-                    <div class="col">
-                        <label for="departamento" class="form-label">Departamento: </label>
-                        <input id="departamento" type="text" name="departamento" class="form-control">
-                    </div>
-                </div>
+
                 <div class="row m-1">
                     <div class="col">
                         <label for="ciudad" class="form-label">Ciudad:</label>
@@ -24,10 +19,18 @@
                     </div>
                 </div>
 
+                <div class="row m-1">
+                    <div class="col">
+                        <label for="departamento" class="form-label">Departamento: </label>
+                        <input id="departamento" type="text" name="departamento" class="form-control">
+                    </div>
+                </div>
+
+
                 <div class="row m-1 gx-1">
                     <div class="col">
-                        <button type="button" id="btnRegistrar" class="btn btn-primary m-1"><i class="fas fa-save"></i> Registrar</button>
-                        <button type="button" id="btnCancelar" class="btn btn-danger m-1"><i class="fas fa-window-close"></i> Cancelar</button>
+                        <button type="button" id="btnRegistrar" class="btn btn-primary m-1" (click)="registrarUbicacion();"><i class="fas fa-save"></i> Registrar</button>
+                        <button type="button" id="btnCancelar" class="btn btn-danger m-1" (click)="reloadCurrentPage();"><i class="fas fa-window-close"></i> Cancelar</button>
                     </div>
                 </div>
 

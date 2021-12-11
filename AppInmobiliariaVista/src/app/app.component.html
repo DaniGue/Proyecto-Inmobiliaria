@@ -1,1 +1,60 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="assets/icono.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+      Inmobiliaria
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav   mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#"><i class="fa fa-home"></i> Inicio</a>
+        </li>
+        <li class="nav-item dropdown" *ngIf="EsAutenticado">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Inmuebles
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="inmueble/registrar">Registrar</a></li>
+            <li><a class="dropdown-item" href="inmueble/consultar">Consultar</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown" *ngIf="EsAutenticado">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Ubicaciones
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="ubicacion/registrar">Registrar</a></li>
+            <li><a class="dropdown-item" href="ubicacion/consultar">Consultar</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <span *ngIf="EsAutenticado;else elseBlock">Bienvenido {{nombreUsuario}}</span>
+            <ng-template #elseBlock>
+              Acceso
+            </ng-template>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="usuario/ingresar" *ngIf="!EsAutenticado"><i
+                  class="fas fa-sign-in-alt"></i> Acceder</a></li>
+            <li><a class="dropdown-item" href="usuario/registrar" *ngIf="!EsAutenticado"><i
+                  class="fas fa-sign-in-alt"></i> Registrar</a></li>
+            <li><a class="dropdown-item" href="#" *ngIf="EsAutenticado" (click)="cerrarSession();"><i class="fas fa-sign-in-alt"></i> Cerrar
+                Sesión</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
 <router-outlet></router-outlet>

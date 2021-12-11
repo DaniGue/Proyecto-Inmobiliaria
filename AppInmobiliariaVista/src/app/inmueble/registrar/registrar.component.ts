@@ -12,7 +12,7 @@ import swal from 'sweetalert2';
 export class RegistrarInmuebleComponent implements OnInit {
   inmueble: any;
   listaUbicaciones: any;
-  archivos:any;
+  archivos: any;
   constructor(private inmueble_Service: InmuebleService, private ubicacion_Service: UbicacionService, private http: HttpClient) {
     this.inmueble = ""
   }
@@ -21,6 +21,8 @@ export class RegistrarInmuebleComponent implements OnInit {
     this.consultarUbicacionesTodas();
   }
   registrarInmuebles() {
+    let formData = new FormData((document.getElementById("frmRegistrarInmueble") as HTMLFormElement));
+    //formData.append("files", this.archivos[0]);
     let nombre = (document.getElementById("nombre") as HTMLInputElement).value;
     let tipo = (document.getElementById("tipo") as HTMLInputElement).value;
     let ubicacion = (document.getElementById("ubicacion") as HTMLInputElement).value;
@@ -32,7 +34,7 @@ export class RegistrarInmuebleComponent implements OnInit {
       ubicacion: ubicacion,
       precio: precio
     };
-    return this.inmueble_Service.registrarInmuebles(this.inmueble).subscribe((data: any) => {
+    return this.inmueble_Service.registrarInmuebles(formData).subscribe((data: any) => {
       //console.log("Respuesta de registro de inmueble:");
       //console.log(data);
       if (data.resultado) {
@@ -72,14 +74,14 @@ export class RegistrarInmuebleComponent implements OnInit {
     window.location.reload();
   }
 
-  setFile(event:any){
+  setFile(event: any) {
 
   }
-  guardarImagen(){
-    let formData=new FormData();
-      formData.append("files",this.archivos[0]);
-      this.inmueble_Service.guardarImagenInmueble(formData).subscribe(data=>{
+  guardarImagen() {
+    let formData = new FormData();
+    formData.append("files", this.archivos[0]);
+    this.inmueble_Service.guardarImagenInmueble(formData).subscribe(data => {
 
-      });
+    });
   }
 }

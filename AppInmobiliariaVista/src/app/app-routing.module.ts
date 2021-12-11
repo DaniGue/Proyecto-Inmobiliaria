@@ -7,10 +7,10 @@ import { ConsultarUbicacionComponent } from './ubicacion/consultar/consultar.com
 import { RegistrarInmuebleComponent } from './inmueble/registrar/registrar.component';
 import { ConsultarInmuebleComponent } from './inmueble/consultar/consultar.component';
 
-const routes: Routes = [{
+const routes: Routes = [/*{
   path: "",
   component: RouterModule
-},
+},*/
 {
   path: "usuario/ingresar",
   component: IngresarUsuarioComponent

@@ -13,7 +13,7 @@
         <img src="assets/Logo.png">
 
         <legend><br>Registrar inmueble</legend>
-        <form action="#" method="post" class="container">
+        <form id="frmRegistrarInmueble" action="#" method="post" class="container" enctype = "multipart/form-data">
 
             <div class="row m-1">
                 <div class="col">
@@ -49,6 +49,12 @@
                     <input id="precio" name="precio" class="form-control" type="number" min="1000000" step="1000000" >
                 </div>
             </div>
+            <div class="row m-1">
+              <div class="col">
+                  <label for="imagen" class="form-label">Foto Inmueble:</label>
+                  <input id="imagen" name="imagen" class="form-control" type="file" >
+              </div>
+          </div>
             <div class="row mt-3">
                 <div class="col">
                     <button type="button" name="Registrar" class="btn btn-primary m-1" (click)="registrarInmuebles();"><i class="fas fa-search"></i>

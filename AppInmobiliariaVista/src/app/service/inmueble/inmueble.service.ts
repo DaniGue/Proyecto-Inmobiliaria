@@ -12,7 +12,9 @@ export class InmuebleService {
 
   //Registrar inmuebles
   registrarInmuebles(inmueble: any) {
-    return this.http.post<any>("http://localhost:5000/insertarInmueble", inmueble);
+    let headers=new HttpHeaders();
+      headers.set('enctype', 'multipart/form-data');
+    return this.http.post<any>("http://localhost:5000/insertarInmueble", inmueble,{headers:headers});
   }
 
   //Modificar inmuebles
