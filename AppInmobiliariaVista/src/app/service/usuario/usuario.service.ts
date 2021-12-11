@@ -11,7 +11,7 @@ export class UsuarioService {
     //Registrar ubicacion
     registrarUsuario(usuario: any) {
         //obtenemos los datos desde el typescript y se los enviamos al backend
-        this.http.put<any>("http://localhost:5000/registrarUsuario", usuario);            
+        return this.http.post<any>("http://localhost:5000/insertarUsuario", usuario);            
     }
     consultarUsuario(usuario: any) {
          return this.http.get("http://localhost:5000/consultarUsuario", usuario);
