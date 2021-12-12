@@ -1,1 +1,55 @@
-<p>consultar works!</p>
+
+
+
+<div class="container-fluid">
+    <div class="row">
+      <div class="Section2 col-8 me-auto ms-auto">
+        <!-- <img src="assets/Logo.png"> -->
+        <legend><br>Consultar ubicacion</legend>
+        <form action="#" method="post" class="container">
+          <div class="row m-1">
+
+            <div class="col">
+                <label for="ciudad" class="form-label">Ciudad:</label>
+                <select id="ciudad" name="ciudad" class="form-select" >
+                  <option value="">(Seleccione Ciudad)</option>
+                  <option *ngFor="let ciudad of listaUbicaciones" value="{{ubicacion._id}}">{{ubicacion.ciudad}}</option>
+                </select>
+            </div>
+
+            <div class="col">
+                <label for="departamento" class="form-label">Departamento</label>
+                <select id="departamento" name="departamento" class="form-select" >
+                  <option value="">(Seleccione Departamento)</option>
+                  <option *ngFor="let departamento of listaUbicaciones" value="{{ubicacion._id}}">{{ubicacion.departamento}}</option>
+                </select>
+            </div>
+            
+        </form>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="Section2 col-8 me-auto ms-auto p-0">
+        <table id="tbl_Ubicaciones"  class="table table-striped table-hover table-responsive" >
+          <thead>
+            <th>Cuidad</th>
+            <th>Departamento</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let ubicacion of listaUbicaciones">
+              <td>
+                {{ubicacion.cuidad}}
+              </td>
+              <td>
+                {{ubicacion.departamento}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  
+  </div>
+  
+  
