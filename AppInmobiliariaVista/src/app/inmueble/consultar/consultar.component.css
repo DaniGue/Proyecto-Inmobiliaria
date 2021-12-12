@@ -1,45 +1,45 @@
-
-
-legend{
-    text-transform: uppercase; 
-    font-style:oblique;
-    font-weight:bold;
-    font-size:18pt;
-    margin: 5% 0%;
+legend {
+  text-transform: uppercase;
+  font-style: oblique;
+  font-weight: bold;
+  font-size: 18pt;
+  margin: 5% 0%;
 }
 
-.Section2{
-    border: 6px double #030d4f;
-    background-color: #f3f5f4;
-    border-radius: 10px;
-   padding: 5px 5px 20px;    
-
+.Section2 {
+  border: 6px double #030d4f;
+  background-color: #f3f5f4;
+  border-radius: 10px;
+  padding: 5px 5px 20px;
 }
 
-.Section2 img{
-    width: 100%;
-    background-color: #030d4f;
-    position: relative;
- 
-  }
+.Section2 img {
+  width: 100%;
+  background-color: #030d4f;
+  position: relative;
+  aspect-ratio: 1/1;
+}
 
+input[type="text"],
+input[type="password"] {
+  border: none;
+  border-bottom: 1px solid rgb(0, 0, 0);
+  border-radius: 5px;
+  background: transparent;
+  outline: none;
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+}
 
-
-
-input[type="text"], input[type="password"]{
-    border: none;
-    border-bottom: 1px solid rgb(0, 0, 0);
-    border-radius: 5px;
-    background: transparent;
-    outline: none;
-    color:rgb(0, 0, 0);
-    font-size: 16px;
-    }
-
-    /* label{
+/* label{
         margin: 10%;
     } */
 
-input:focus{
-    background: linear-gradient(90deg, rgba(78,78,78,0.26094187675070024) 0%, rgba(50,22,231,0.3925945378151261) 57%, rgba(95,255,251,0.22172619047619047) 100%);
+input:focus {
+  background: linear-gradient(
+    90deg,
+    rgba(78, 78, 78, 0.26094187675070024) 0%,
+    rgba(50, 22, 231, 0.3925945378151261) 57%,
+    rgba(95, 255, 251, 0.22172619047619047) 100%
+  );
 }

@@ -74,6 +74,32 @@ export class RegistrarInmuebleComponent implements OnInit {
     window.location.reload();
   }
 
+  imageToCanvas(ev: any) {
+    try {
+      console.log(ev);
+      if(ev.target.files) {
+        let file = ev.target.files[0]; //get first file
+        var reader  = new FileReader();
+
+        reader.readAsDataURL(file);
+
+        reader.onloadend = function (e:any) {
+          var image = new Image();
+          image.src = e.target.result;
+          image.onload = function(ev) {
+            var canvas = ((document.getElementById('canvas')) as HTMLCanvasElement);
+            canvas.width = (image.height/image.width)*300;
+            canvas.height = (image.height/image.width)*300;
+            var ctx = canvas.getContext('2d')as CanvasRenderingContext2D;
+            ctx.drawImage(image,0,0,((image.height/image.width)*300),((image.height/image.width)*300));
+          }
+        }
+     }
+    } catch (ex) {
+      console.error(ex);
+    }
+  }
+
   setFile(event: any) {
 
   }

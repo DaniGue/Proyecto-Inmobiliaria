@@ -20,7 +20,7 @@
               <option value="apartamento">Apartamento</option>
             </select>
           </div>
-          
+
           <div class="col">
             <label for="ubicacion" class="form-label">Ubicacion:</label>
             <select id="ubicacion" name="ubicacion" class="form-select" >
@@ -54,6 +54,7 @@
           <th>Tipo</th>
           <th>Ubicacion</th>
           <th>Precio</th>
+          <th>Imagen</th>
         </thead>
         <tbody>
           <tr *ngFor="let inmueble of listaInmuebles">
@@ -68,6 +69,10 @@
             </td>
             <td>
               {{inmueble.precio}}
+            </td>
+            <td>
+              <img *ngIf="inmueble.imagen" src="{{inmueble.imagen}}" width="100" height="100" class="border border-dark border-3 rounded-pill">
+
             </td>
           </tr>
         </tbody>
